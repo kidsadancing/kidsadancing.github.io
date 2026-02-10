@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Spring Kinder Kids</title>
+
+<style>
+
+/* ================= ROOT THEME ================= */
+
+:root {
+  --primary: #6c8a5b;
+  --secondary: #f4f4ef;
+  --accent: #b56b45;
+  --text-dark: #2c2c2c;
+  --text-light: #ffffff;
+
+  --radius: 14px;
+  --shadow: 0 8px 20px rgba(0,0,0,0.15);
+
+  --max-width: 1100px;
+}
+
+/* ================= GLOBAL ================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  color: var(--text-dark);
+  background: var(--secondary);
+  line-height: 1.6;
+}
+
+/* ================= HERO ================= */
+
+.hero {
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+    url("goat_together.jpg") center/cover no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  padding: 2rem;
+  position: relative;
+}
+
+
+.hero-content {
+  max-width: 700px;
+  color: var(--text-light);
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+/* ================= CTA BUTTON ================= */
+
+.hero-cta {
+  position: absolute;
+  bottom: 60px;
+}
+  
+.cta-button {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  padding: 0.9rem 1.8rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+  box-shadow: var(--shadow);
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* ================= INFO SECTION ================= */
+
+.section {
+  max-width: var(--max-width);
+  margin: auto;
+  padding: 4rem 1.5rem;
+  text-align: center;
+}
+
+.section h2 {
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+}
+
+.bullet-grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.bullet {
+  background: white;
+  padding: 1rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+  @media (max-width: 768px) {
+  .hero-cta {
+    bottom: 40px;
+  }
+      .hero {
+    background-position: center 30%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-cta {
+    bottom: 30px;
+  }
+    .hero {
+    background-position: center 25%;
+  }
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (min-width: 768px) {
+  .bullet-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+
+  <div class="hero-content">
+    <h1>Spring Kinder Kids</h1>
+    <p>Friendly • Dual-purpose • Perfect homestead goats</p>
+  </div>
+
+  <a href="mailto:your@email.com" class="cta-button hero-cta">
+    Enquire About Availability
+  </a>
+
+</section>
+
+
+
+<!-- INFO -->
+<section class="section">
+  <h2>Why Kinder Goats</h2>
+
+  <div class="bullet-grid">
+    <div class="bullet">Balanced milk & meat breed</div>
+    <div class="bullet">Easy handling size</div>
+    <div class="bullet">Great family temperament</div>
+    <div class="bullet">Efficient feed conversion</div>
+    <div class="bullet">Rich high-butterfat milk</div>
+    <div class="bullet">Ideal small farm goat</div>
+  </div>
+</section>
+
+</body>
+</html>
