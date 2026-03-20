@@ -102,41 +102,44 @@ body {
   text-decoration: none;
 }
 
-/* ================= CALM IMAGE SECTION ================= */
+/* ================= CALM IMAGE ================= */
 
 .calm-section {
-  position: relative;
-  min-height: 55vh;
-
-  background:
-    url("goats_calm.png") center / cover no-repeat;
-
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
+  height: 55vh;
+  background: url("goats_calm.png") center / cover no-repeat;
 }
 
-/* overlap into next section */
-.calm-overlay {
-  position: relative;
-  transform: translateY(50%);
-  z-index: 2;
-}
+/* ================= WHY OVERLAP CARD ================= */
 
-/* ================= INFO ================= */
-
-.section {
+.why-wrap {
   max-width: var(--max-width);
   margin: auto;
-  padding: 5rem 1.5rem 3rem;
-  text-align: center;
-  background: var(--secondary);
+  position: relative;
 }
 
-.section h2 {
+/* main card */
+.why-card {
+  background: white;
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+
+  padding: 2rem 1.5rem;
+
+  /* 👇 overlap */
+  margin-top: -80px;
+
+  /* 👇 left aligned feel */
+  width: 95%;
+  margin-left: 1rem;
+}
+
+.why-card h2 {
+  text-align: left;
   color: var(--primary);
   margin-bottom: 1.5rem;
 }
+
+/* bullets */
 
 .bullet-grid {
   display: grid;
@@ -144,10 +147,10 @@ body {
 }
 
 .bullet {
-  background: white;
+  background: var(--secondary);
   padding: 1rem;
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  text-align: left;
 }
 
 /* ================= CONTACT ================= */
@@ -165,14 +168,10 @@ body {
   gap: 2rem;
 }
 
-/* goat */
-
 .contact-image {
   max-width: 300px;
   transform: scaleX(-1);
 }
-
-/* text */
 
 .contact-content {
   max-width: 500px;
@@ -231,16 +230,34 @@ body {
 /* ================= RESPONSIVE ================= */
 
 @media (min-width: 768px) {
-  .bullet-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
 
   .hero h1 {
     font-size: 3rem;
   }
 
+  .why-card {
+    margin-top: -100px;
+    width: 85%;
+  }
+
+  .bullet-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .dog-container {
     flex-direction: row;
+  }
+}
+
+@media (min-width: 1024px) {
+
+  .why-card {
+    margin-top: -120px;
+    width: 70%;
+  }
+
+  .bullet-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -255,9 +272,15 @@ body {
   .contact-image {
     max-width: 220px;
   }
+
+  .why-card {
+    margin-left: 0.5rem;
+    width: 95%;
+  }
 }
 
 </style>
+  
 </head>
 
 <body>
@@ -276,21 +299,22 @@ body {
 </section>
 
 <!-- CALM IMAGE TRANSITION -->
-<section class="calm-section">
-  <div class="calm-overlay"></div>
-</section>
+<!-- CALM IMAGE -->
+<section class="calm-section"></section>
 
-<!-- INFO -->
-<section class="section">
-  <h2>Why Kinder Goats</h2>
+<!-- OVERLAP INFO CARD -->
+<section class="why-wrap">
+  <div class="why-card">
+    <h2>Why Kinder Goats</h2>
 
-  <div class="bullet-grid">
-    <div class="bullet">Balanced milk & meat breed</div>
-    <div class="bullet">Easy handling size</div>
-    <div class="bullet">Great family temperament</div>
-    <div class="bullet">Efficient feed conversion</div>
-    <div class="bullet">Rich high-butterfat milk</div>
-    <div class="bullet">Ideal small farm goat</div>
+    <div class="bullet-grid">
+      <div class="bullet">Balanced milk & meat breed</div>
+      <div class="bullet">Easy handling size</div>
+      <div class="bullet">Great family temperament</div>
+      <div class="bullet">Efficient feed conversion</div>
+      <div class="bullet">Rich high-butterfat milk</div>
+      <div class="bullet">Ideal small farm goat</div>
+    </div>
   </div>
 </section>
 
@@ -319,15 +343,15 @@ body {
 <section class="dog-section">
   <div class="dog-container">
 
-    <img src="dog_friendly.png" class="dog-image" alt="Livestock guardian dog">
-
     <div class="dog-text">
       <h3>Guardian Livestock Dog – Maremma</h3>
       <p>
-        Our goats are protected and raised alongside a Maremma livestock guardian dog,
+        Our goats are protected and raised alongside Maremma livestock guardian dogs,
         helping keep the herd calm, safe, and well-adjusted.
       </p>
     </div>
+
+        <img src="dog_friendly.png" class="dog-image" alt="Livestock guardian dog">
 
   </div>
 </section>
