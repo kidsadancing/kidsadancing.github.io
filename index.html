@@ -7,7 +7,7 @@
 
 <style>
 
-/* ================= ROOT THEME ================= */
+/* ================= ROOT ================= */
 
 :root {
   --primary: #6c8a5b;
@@ -41,25 +41,23 @@ body {
 /* ================= HERO ================= */
 
 .hero {
-  min-height: 100vh;
+  min-height: 90vh;
   background:
-    linear-gradient(rgba(0,0,0,0.28), rgba(0,0,0,0.28)),
-    url("goat_together.jpg") center/cover no-repeat;
+    linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
+    url("goat_together_short_1200.jpg") center bottom / cover no-repeat;
 
   display: flex;
-  flex-direction: column;
+  align-items: flex-start; /* push content upward */
   justify-content: center;
-  align-items: center;
-
   text-align: center;
-  padding: 2rem;
-  position: relative;
+  padding-top: 6rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
-
 
 .hero-content {
   max-width: 700px;
-  color: var(--text-light);
+  color: white;
 }
 
 .hero h1 {
@@ -69,35 +67,9 @@ body {
 
 .hero p {
   font-size: 1.2rem;
-  margin-bottom: 2rem;
 }
 
-/* ================= CTA BUTTON ================= */
-
-.hero-cta {
-  position: absolute;
-  bottom: 60px;
-}
-  
-.cta-button {
-  display: inline-block;
-  background: var(--accent);
-  color: white;
-  padding: 1.2rem 2.2rem;
-  border-radius: var(--radius);
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 1.2rem;
-  transition: 0.3s;
-  box-shadow: var(--shadow);
-}
-
-.cta-button:hover {
-  transform: translateY(-2px);
-  opacity: 0.9;
-}
-
-/* ================= INFO SECTION ================= */
+/* ================= SECTION ================= */
 
 .section {
   max-width: var(--max-width);
@@ -110,6 +82,8 @@ body {
   margin-bottom: 1.5rem;
   color: var(--primary);
 }
+
+/* ================= GRID ================= */
 
 .bullet-grid {
   display: grid;
@@ -124,36 +98,91 @@ body {
   box-shadow: var(--shadow);
 }
 
-  .email-text {
-  margin-top: 10px;
-  font-size: 1.1rem;
+/* ================= CONTACT FEATURE ================= */
+
+.contact-section {
+  position: relative;
+  background: white;
+  overflow: hidden;
+  padding: 5rem 1.5rem;
+}
+
+.contact-container {
+  max-width: var(--max-width);
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+}
+
+/* goat image floating left */
+.contact-image {
+  position: absolute;
+  left: -40px;
+  bottom: 0;
+  max-width: 400px;
+  pointer-events: none;
+}
+
+.contact-content {
+  max-width: 500px;
+  text-align: left;
+}
+
+.contact-content h2 {
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.contact-content p {
+  margin-bottom: 1.5rem;
+}
+
+/* CTA */
+
+.cta-button {
+  display: inline-block;
+  background: var(--accent);
   color: white;
+  padding: 1rem 2rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: var(--shadow);
+  transition: 0.3s;
 }
 
-  @media (max-width: 768px) {
-  .hero-cta {
-    bottom: 40px;
-  }
-      .hero {
-    background-position: center 30%;
-  }
+.cta-button:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
 }
-
-@media (max-width: 480px) {
-  .hero-cta {
-    bottom: 30px;
-  }
-    .hero {
-    background-position: center 25%;
-  }
-}
-
 
 /* ================= RESPONSIVE ================= */
 
 @media (min-width: 768px) {
   .bullet-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .contact-image {
+    position: relative;
+    left: 0;
+    max-width: 280px;
+    margin-bottom: 2rem;
+  }
+
+  .contact-content {
+    text-align: center;
   }
 }
 
@@ -164,22 +193,11 @@ body {
 
 <!-- HERO -->
 <section class="hero">
-
   <div class="hero-content">
     <h1>Spring Kinder Kids</h1>
     <p>Friendly • Dual-purpose • Perfect homestead goats</p>
   </div>
-
-  <a href="mailto:your@email.com" class="cta-button hero-cta">
-    ✉ Email for Availability
-  </a>
-  <div class="email-text">
-support@example.com
-</div>
-
 </section>
-
-
 
 <!-- INFO -->
 <section class="section">
@@ -193,6 +211,29 @@ support@example.com
     <div class="bullet">Rich high-butterfat milk</div>
     <div class="bullet">Ideal small farm goat</div>
   </div>
+</section>
+
+<!-- CONTACT / INQUIRY -->
+<section class="contact-section">
+
+  <div class="contact-container">
+
+    <img src="00-good-DSC_8812_cut_1200.png" class="contact-image" alt="Goat jumping">
+
+    <div class="contact-content">
+      <h2>Reserve Your Spring Kids</h2>
+      <p>
+        Our baby goats are raised with care, personality, and purpose.
+        Reach out to ask about availability, pricing, and pickup details.
+      </p>
+
+      <a href="mailto:support@example.com" class="cta-button">
+        ✉ Contact Us
+      </a>
+    </div>
+
+  </div>
+
 </section>
 
 </body>
