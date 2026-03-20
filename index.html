@@ -16,9 +16,8 @@
   --text-dark: #2c2c2c;
   --text-light: #ffffff;
 
-  --radius: 14px;
-  --shadow: 0 8px 20px rgba(0,0,0,0.15);
-
+  --radius: 12px;
+  --shadow: 0 6px 16px rgba(0,0,0,0.15);
   --max-width: 1100px;
 }
 
@@ -41,40 +40,74 @@ body {
 /* ================= HERO ================= */
 
 .hero {
-  min-height: 90vh;
+  position: relative;
+  min-height: 70vh;
+
   background:
-    linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
-    url("goat_together_short_1200.jpg") center bottom / cover no-repeat;
+    url("goat_together_short_1200.jpg") center / cover no-repeat;
 
   display: flex;
-  align-items: flex-end; /* ⬅️ anchor to bottom */
+  align-items: flex-end;
   justify-content: center;
-  text-align: center;
 
-  padding: 2rem 1.5rem 3rem; /* bottom breathing room */
+  padding: 1.5rem;
+}
+
+/* readable fade */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.75) 0%,
+    rgba(0,0,0,0.4) 40%,
+    rgba(0,0,0,0.0) 70%
+  );
 }
 
 .hero-content {
-  max-width: 700px;
+  position: relative;
+  z-index: 2;
+  text-align: center;
   color: white;
-
-  background: linear-gradient(
-  rgba(0,0,0,0.35),
-  rgba(0,0,0,0.15)
-);
-  padding: 1.5rem 1.8rem;
-  border-radius: 12px;
-
-  backdrop-filter: blur(4px); /* optional but nice */
+  max-width: 90%;
 }
 
 .hero h1 {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  margin-bottom: 1rem;
+  font-size: 2.4rem;
+  line-height: 1.2;
+  margin-bottom: 0.4rem;
 }
 
 .hero p {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  margin-bottom: 0.6rem;
+}
+
+.hero-badge {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* CTA */
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  background: var(--accent);
+  color: white;
+
+  padding: 0.8rem 1.3rem;
+  border-radius: var(--radius);
+
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-decoration: none;
 }
 
 /* ================= SECTION ================= */
@@ -82,7 +115,7 @@ body {
 .section {
   max-width: var(--max-width);
   margin: auto;
-  padding: 4rem 1.5rem;
+  padding: 3.5rem 1.5rem;
   text-align: center;
 }
 
@@ -96,7 +129,6 @@ body {
 .bullet-grid {
   display: grid;
   gap: 1rem;
-  margin-top: 2rem;
 }
 
 .bullet {
@@ -104,15 +136,16 @@ body {
   padding: 1rem;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  font-size: 1rem;
 }
 
-/* ================= CONTACT FEATURE ================= */
+/* ================= CONTACT ================= */
 
 .contact-section {
   position: relative;
   background: white;
+  padding: 4rem 1.5rem;
   overflow: hidden;
-  padding: 5rem 1.5rem;
 }
 
 .contact-container {
@@ -124,14 +157,15 @@ body {
   position: relative;
 }
 
-/* goat image floating left */
+/* goat visual */
+
 .contact-image {
   position: absolute;
   left: -40px;
   bottom: 0;
-  max-width: 400px;
-  pointer-events: none;
+  max-width: 320px;
   transform: scaleX(-1);
+  pointer-events: none;
 }
 
 .contact-content {
@@ -146,56 +180,45 @@ body {
 
 .contact-content p {
   margin-bottom: 1.5rem;
+  font-size: 1.05rem;
 }
 
-/* CTA */
+/* CTA button */
 
 .cta-button {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
   background: var(--accent);
   color: white;
-  padding: 1rem 2rem;
-  border-radius: var(--radius);
-  text-decoration: none;
-  font-weight: bold;
-  box-shadow: var(--shadow);
-  transition: 0.3s;
-}
 
-.cta-button:hover {
-  transform: translateY(-2px);
-  opacity: 0.9;
+  padding: 0.9rem 1.4rem;
+  border-radius: var(--radius);
+
+  font-weight: 700;
+  text-decoration: none;
 }
 
 /* ================= RESPONSIVE ================= */
 
-/* ================= HERO RESPONSIVE ================= */
-
-/* Tablet */
 @media (min-width: 768px) {
-  .hero {
-    padding-bottom: 4rem;
+  .bullet-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 
-  .hero-content {
-    padding: 2rem 2.5rem;
+  .hero h1 {
+    font-size: 3rem;
   }
-    .bullet-grid {
-    grid-template-columns: repeat(3, 1fr);
+
+  .hero p {
+    font-size: 1.25rem;
   }
 }
 
-/* Laptop */
-@media (min-width: 1024px) {
-  .hero {
-    min-height: 85vh;
-    padding-bottom: 5rem;
-  }
+@media (max-width: 900px) {
 
-  .hero-content {
-    max-width: 800px;
-  }
-    .contact-container {
+  .contact-container {
     flex-direction: column;
     align-items: center;
     text-align: center;
@@ -204,7 +227,7 @@ body {
   .contact-image {
     position: relative;
     left: 0;
-    max-width: 280px;
+    max-width: 260px;
     margin-bottom: 2rem;
   }
 
@@ -212,15 +235,6 @@ body {
     text-align: center;
   }
 }
-
-/* Desktop */
-@media (min-width: 1280px) {
-  .hero {
-    min-height: 80vh;
-    padding-bottom: 6rem;
-  }
-}
-  
 
 </style>
 </head>
@@ -232,6 +246,11 @@ body {
   <div class="hero-content">
     <h1>Spring Kinder Kids</h1>
     <p>Friendly • Dual-purpose • Perfect homestead goats</p>
+    <div class="hero-badge">Available Now – 2026 Kids</div>
+
+    <a href="mailto:kidsadancing@icloud" class="hero-cta">
+      ✉ Email Us →
+    </a>
   </div>
 </section>
 
@@ -249,7 +268,7 @@ body {
   </div>
 </section>
 
-<!-- CONTACT / INQUIRY -->
+<!-- CONTACT -->
 <section class="contact-section">
 
   <div class="contact-container">
@@ -259,12 +278,12 @@ body {
     <div class="contact-content">
       <h2>Reserve Your Spring Kids</h2>
       <p>
-        Our baby goats are raised with care, personality, and purpose.
-        Reach out to ask about availability, pricing, and pickup details.
+        Our baby goats are raised with care and personality.
+        Reach out to ask about availability, pricing, and pickup.
       </p>
 
-      <a href="mailto:support@example.com" class="cta-button">
-        ✉ Contact Us
+      <a href="mailto:kidsadancing@icloud" class="cta-button">
+        ✉ Contact Us →
       </a>
     </div>
 
